@@ -1,6 +1,8 @@
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,8 +36,18 @@ public class test extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+	        String keyword = request.getParameter("keyword");
+	        System.out.println("keyword: " + keyword);
+	        PrintWriter writer = response.getWriter();
+	         
+	        // build HTML code
+	        String htmlRespone = "<html>";
+	        htmlRespone += "<h2>Your username is: " + keyword+ "<h2/>";      
+	        htmlRespone += "</html>";
+	         
+	        writer.println(htmlRespone);
+		
 	}
 
 }
